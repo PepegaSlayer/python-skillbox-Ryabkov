@@ -1,0 +1,132 @@
+N = int(input("Введите число: "))
+# Функция возвращает список из нечётных чисел от 1 до N
+def odd_numbers(N):
+    return [number for number in range(1, N+1, 2)]
+
+print(f"Список из нечётных чисел от одного до N: {odd_numbers(N)}")
+
+===========================
+# Функция возвращает список игроков на первый день
+def first_day_players(players):
+    return players[::2]
+
+players = ["Артемий", "Борис", "Влад", "Гоша", "Дима", "Евгений", "Женя", "Захар"]
+print(first_day_players(players))
+===========================
+
+# Функция возвращает список видеокарт, максимальная карта исключена
+def update_graphics_card(graphics_card):
+    max_card = max(graphics_card)
+    graphics_card.remove(max_card)
+    return graphics_card
+
+# Запрос ввода количества видеокарт
+graphic_card_count = int(input("Количество видеокарт: "))
+
+# Функция возвращает список видеокарт
+def get_graphics_card(graphic_card_count):
+    graphics_card = []
+    for graphic_card_number in range(1, graphic_card_count + 1):
+        graphics_card.append(int(input(f"Видеокарта {graphic_card_number}: ")))
+    return graphics_card
+
+graphics_card = get_graphics_card(graphic_card_count)
+graphics_card = update_graphics_card(graphics_card)
+
+print(f"Новый список видеокарт: {graphics_card}")
+
+===========================
+
+# Функция возвращает список любимых фильмов
+def get_favorite_films(films_count, films):
+    favorite_films = []
+    for film_number in range(films_count):
+        film_add = input("Введите название фильма: ")
+        if film_add in films:
+            favorite_films.append(film_add)
+        else:
+            print(f"Ошибка: фильма {film_add} у нас нет :(")
+    return favorite_films
+
+films = ["Крепкий орешек", "Назад в будущее", "Таксист", "Леон", "Богемская рапсодия", "Город грехов", "Мементо",
+         "Отступники", "Деревня"]
+favorite_films = get_favorite_films(int(input("Сколько фильмов хотите добавить? ")), films)
+
+print("Ваш список любимых фильмов: ", end="")
+print(", ".join((str(item) for item in favorite_films)))
+
+===========================
+def enter_containers():
+    count = 0
+    containers = []
+    while count < 3:
+        container_weight = int(input("Введите вес контейнера: "))
+        if 0 <= container_weight <= 200:
+            containers.append(container_weight)
+            count += 1
+    return containers
+
+def get_container_position(new_container, containers):
+    for i, container in enumerate(containers):
+        if container < new_container:
+            return i + 1
+    return len(containers) + 1
+
+
+containers = enter_containers()
+containers.sort(reverse=True)
+new_container = int(input("Введите вес нового контейнера: "))
+print(f"Номер, который получит новый контейнер: {get_container_position(new_container, containers)}")
+===========================
+
+def shift_list(N, K):
+    return N[-K:] + N[:-K]
+
+
+N = []
+while True:
+	number = input("Введите число,чтобы добавить его, либо end, чтобы закончить ввод: ")
+	if number == "end":
+		break
+	N.append(int(number))
+
+K = int(input("Сдвиг: "))
+print(f"Изначальный список: {N}")
+print(f"Сдвинутый список: {shift_list(N, K)}")
+
+
+==========================
+
+def is_palindrome(string):
+    reversed_string = string[::-1]
+    return string == reversed_string
+
+
+string = input("Введите слово: ")
+if is_palindrome(string):
+		print("Слово является палиндромом")
+	else:
+        	print("Слово не является палиндромом")
+
+===========================
+
+number = input("Введите число,чтобы добавить его, либо end, чтобы закончить ввод: ")
+N = []
+
+# Тут нужно как-нибудь ввести список чисел, я выбрал способ, где числа вводятся до тех пор, пока не будет введено "end"
+while number != "end":
+    N.append(int(number))
+    number = input("Введите число,чтобы добавить его, либо end, чтобы закончить ввод: ")
+
+print(f"Изначальный список: {N}")
+N.sort()
+print(f"Отсортированный список: {N}")
+
+=============================
+
+N = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 2]  # Но тут может быть любой список
+
+for index in range(len(N) - 1, -1, -1):
+    if N[index] % 2 == 0:
+        print(N[index], end=" ")
+
